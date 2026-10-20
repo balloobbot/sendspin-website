@@ -95,7 +95,7 @@ Each case names the roles involved, how the device connects, which pairing metho
     <p><strong>Roles:</strong> server, client, or both.</p>
     <ul>
       <li>A software music player, a Linux audio box, a home-automation hub: add the server side to send its output to Sendspin devices, add the client side to be a target for other servers, or do both.</li>
-      <li>Reuse <a href="https://github.com/Sendspin/aiosendspin">aiosendspin</a> if you are in Python; it is the server inside Music Assistant.</li>
+      <li>Reuse <a href="https://github.com/Sendspin/aiosendspin">aiosendspin</a> if you are in Python; it is the server inside Music Assistant. In C++, use <a href="https://github.com/Sendspin/sendspin-server-cpp">sendspin-server-cpp</a>.</li>
       <li>Your server identity key must survive backups and migrations, or every device will treat the restored server as a stranger.</li>
       <li>The <a href="/build/guide/server/ux/">server UX chapter</a> covers discovery, approval and pairing.</li>
     </ul>

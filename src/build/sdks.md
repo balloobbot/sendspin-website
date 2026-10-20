@@ -21,11 +21,14 @@ This page lists the implementations that are at specification 1.0. All of them a
 |---|---|---|---|---|
 | C++ | [sendspin-cpp](https://github.com/Sendspin/sendspin-cpp) | player, controller, metadata, artwork, visualizer, color | 1.0 | [ESPHome](https://esphome.io/), [sendspin-cpp-cli](https://github.com/Sendspin/sendspin-cpp-cli) |
 | Python | [aiosendspin](https://github.com/Sendspin/aiosendspin) (client) | see repository | 1.0 | Test and reference client |
+| C#/.NET | [sendspin-dotnet](https://github.com/Sendspin/sendspin-dotnet) | player, controller, metadata, artwork, source | 1.0 | |
 | JavaScript | [sendspin-js](https://github.com/Sendspin/sendspin-js) | player; see repository | being updated to 1.0 | [Music Assistant](https://www.music-assistant.io) web UI, the [live demo](/#live-demo) on this site |
 
 **sendspin-cpp** is the library for devices. It runs on ESP32 through the ESP-IDF component registry (`sendspin/sendspin-cpp`) and on Linux and macOS hosts, decodes FLAC and PCM with Opus as an option, and has the Noise encryption built in. The repository's `integration-guide.md`, `internals.md` and `playback-sync.md` cover what the guide here does not. Apache 2.0.
 
 **aiosendspin** is the async Python library. Its client side is complete and conformant, but it is best treated as a reference and test client: something to script against your server, or to read when the specification leaves you unsure. On PyPI as `aiosendspin`. Apache 2.0.
+
+**sendspin-dotnet** is the .NET library for Windows, Linux and macOS desktop players, on .NET 8 and .NET 10. It decodes PCM, FLAC and Opus, and supports NativeAOT. You provide the audio output for your platform; the SDK applies the sync correction. Use the 10.x line, which implements specification 1.0. On NuGet as `Sendspin.SDK`. MIT.
 
 **sendspin-js** is the TypeScript client for browsers, with `SendspinPlayer` for a complete player and the lower-level `SendspinCore` for your own user interface. It handles the browser's user-gesture requirement and coarse clocks. It is being brought up to specification 1.0; check the repository for the current state before you depend on a specific feature. On npm as `@sendspin/sendspin-js`.
 
@@ -34,9 +37,11 @@ This page lists the implementations that are at specification 1.0. All of them a
 | Language | Repository | Roles | Spec status | Used by |
 |---|---|---|---|---|
 | Python | [aiosendspin](https://github.com/Sendspin/aiosendspin) (server) | all | 1.0 | [Music Assistant](https://www.music-assistant.io) |
-| C++ | planned | all | not started | |
+| C++ | [sendspin-server-cpp](https://github.com/Sendspin/sendspin-server-cpp) | all | 1.0 | |
 
-**aiosendspin** is the server inside Music Assistant, which makes it the reference server: whatever it does is what clients in the field expect. If you are building a server in Python, build on it. A **C++ server** for embedded and desktop products is on the roadmap but has not been started; if you need one, say so on the Discord so the work can be planned with you.
+**aiosendspin** is the server inside Music Assistant, which makes it the reference server: whatever it does is what clients in the field expect. If you are building a server in Python, build on it.
+
+**sendspin-server-cpp** is the C++ server library for media players, sound server sinks and small daemons. It runs on Linux and macOS hosts and builds as an ESP-IDF component. It streams PCM, FLAC or Opus to each player, with pairing and encryption built in. It is in early development and its API still changes between releases, so pin a release or commit. Apache 2.0.
 
 ## Reference players and tools
 
